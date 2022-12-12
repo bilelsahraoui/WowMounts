@@ -1,8 +1,8 @@
 import React from 'react';
-import Router from './src/config/router';
+import Tabs from './src/config/bottomTab';
 
 const App = () => {
-  return <Router />;
+  return <Tabs />;
 };
 
 export default App;
