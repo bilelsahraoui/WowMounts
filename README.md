@@ -19,5 +19,5 @@ Les objectifs de la v1 sont :
 
 Les objectifs de la v2 sont :
 
--Donjons & Raids
+- Donjons & Raids
 - Consulter un personnage
