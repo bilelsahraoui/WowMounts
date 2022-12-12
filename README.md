@@ -11,13 +11,13 @@ WowMounts sera une application Android principalement dédiée aux montures disp
 
 ## Objectifs 
 
-Les objectifs de la v1 sont :
+### Les objectifs de la v1 sont :
 
 - Montures
 - Métiers
 - Prix du token
 
-Les objectifs de la v2 sont :
+### Les objectifs de la v2 sont :
 
 - Donjons & Raids
 - Consulter un personnage
