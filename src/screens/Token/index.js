@@ -1,33 +1,59 @@
-import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import {View, Text} from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
+import ErrorComponent from '../../components/Global/ErrorComponent';
+import Loading from '../../components/Global/Loading';
+import axiosClient from '../../config/axiosClient';
 
 const Token = () => {
   const [token, setToken] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
   useEffect(() => {
-    axios
+    axiosClient
       .get(
-        'https://eu.api.blizzard.com/data/wow/token/index?namespace=dynamic-eu&locale=fr_FR&access_token=EUclt1NLzwNE3NmGlDndFqDTFIsp85g6z6',
+        'https://eu.api.blizzard.com/data/wow/token/index?namespace=dynamic-eu&locale=fr_FR',
       )
-      .then(res => setToken(res.data));
-  });
+      .then(res => {
+        setToken(res.data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.log(err);
+        setIsError(true);
+      });
+  }, []);
+
   return (
     <Container>
-      <BackgroundContainer source={require('../../assets/images/bank.jpg')} />
-      <DataContainer>
-        <DescriptionContainer>
-          <Description>Dernière mise à jour :</Description>
-          <TimeStamp>
-            {`${new Date(
-              token.last_updated_timestamp,
-            ).toLocaleDateString()} à ${new Date(
-              token.last_updated_timestamp,
-            ).toLocaleTimeString()}`}
-          </TimeStamp>
-          <Price>{token.price / 100 / 100} pièces d'or</Price>
-        </DescriptionContainer>
-      </DataContainer>
+      {isError ? (
+        <ErrorComponent />
+      ) : (
+        <>
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              <BackgroundContainer
+                source={require('../../assets/images/bank.jpg')}
+              />
+              <DataContainer>
+                <DescriptionContainer>
+                  <Description>Dernière mise à jour:</Description>
+                  <TimeStamp>
+                    {`${new Date(
+                      token.last_updated_timestamp,
+                    ).toLocaleDateString()} à ${new Date(
+                      token.last_updated_timestamp,
+                    ).toLocaleTimeString()}`}
+                  </TimeStamp>
+                  <Price>{token.price / 100 / 100} pièces d'or</Price>
+                </DescriptionContainer>
+              </DataContainer>
+            </>
+          )}
+        </>
+      )}
     </Container>
   );
 };

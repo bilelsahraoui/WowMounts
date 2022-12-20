@@ -4,8 +4,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import styled from 'styled-components/native';
 import Home from '../screens/Home';
 import Mounts from '../screens/Mounts';
-import Professions from '../screens/Professions';
 import OtherStack from './otherStack';
+import ProfessionsStack from './professionStack';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -39,7 +39,7 @@ function Tabs() {
         />
         <Tab.Screen
           name="Professions"
-          component={Professions}
+          component={ProfessionsStack}
           options={{
             title: 'Métiers',
             tabBarIcon: () => {

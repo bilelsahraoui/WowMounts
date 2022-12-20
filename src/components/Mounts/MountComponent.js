@@ -1,22 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import axiosClient from '../../config/axiosClient';
 import styled from 'styled-components';
-import {Image} from 'react-native';
 
 const MountComponent = ({id}) => {
   const [mount, setMount] = useState({});
   const [creature_display, setCreature_display] = useState({});
   useEffect(() => {
-    axios
+    axiosClient
       .get(
-        `https://eu.api.blizzard.com/data/wow/mount/${id}?namespace=static-eu&locale=fr_FR&access_token=EUclt1NLzwNE3NmGlDndFqDTFIsp85g6z6`,
+        `https://eu.api.blizzard.com/data/wow/mount/${id}?namespace=static-eu&locale=fr_FR`,
       )
       .then(res => {
         console.log(res);
         setMount(res.data);
-        axios
+        axiosClient
           .get(
-            `https://eu.api.blizzard.com/data/wow/media/creature-display/${mount?.creature_displays[0].id}?namespace=static-eu&locale=fr_FR&access_token=EUclt1NLzwNE3NmGlDndFqDTFIsp85g6z6`,
+            `https://eu.api.blizzard.com/data/wow/media/creature-display/${mount?.creature_displays[0].id}?namespace=static-eu&locale=fr_FR`,
           )
           .then(display => {
             setCreature_display(display.data.assets[0]);
@@ -40,14 +39,12 @@ const ContainerOpacity = styled.TouchableOpacity`
   align-self: center;
   height: 120px;
   width: 100%;
-  background-color: red;
 `;
 
 const Container = styled.View`
   align-items: center;
   height: 100%;
   width: 100%;
-  background-color: red;
 `;
 
 const StyledText = styled.Text`
@@ -56,7 +53,8 @@ const StyledText = styled.Text`
 
 const StyledImage = styled.Image`
   height: 80%;
-  width: 40px;
+  width: 100px;
+  border-radius: 10px;
 `;
 
 export default MountComponent;

@@ -38,7 +38,11 @@ const Home = () => {
             </CloseContainer>
           </Description>
         </Container>
-      ) : null}
+      ) : (
+        <ContainerClosed>
+          <Logo source={require('../../assets/images/wow-logo.png')} />
+        </ContainerClosed>
+      )}
     </SafeAreaView>
   );
 };
@@ -68,6 +72,14 @@ const Container = styled.View`
   width: 85%;
   align-self: center;
   margin-top: 5%;
+  border-radius: 10px;
+`;
+
+const ContainerClosed = styled.View`
+  height: 100%;
+  width: 85%;
+  align-self: center;
+  margin-top: 2%;
   border-radius: 10px;
 `;
 
