@@ -17,7 +17,7 @@ const Other = () => {
         <BackgroundContainer
           source={require('../../assets/images/donjon.jpg')}
         />
-        <CategorieTitle>Donjons et Raids</CategorieTitle>
+        <CategorieTitle>Donjons et Raids Mythiques</CategorieTitle>
       </Categorie>
       <Categorie onPress={() => navigation.navigate('/character')}>
         <BackgroundContainer

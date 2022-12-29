@@ -7,7 +7,7 @@ import axiosClient from '../../config/axiosClient';
 const Token = () => {
   const [token, setToken] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     axiosClient
@@ -17,41 +17,38 @@ const Token = () => {
       .then(res => {
         setToken(res.data);
         setLoading(false);
+        setError(false);
       })
-      .catch(err => {
-        console.log(err);
-        setIsError(true);
+      .catch(() => {
+        setLoading(false);
+        setError(true);
       });
   }, []);
 
   return (
     <Container>
-      {isError ? (
+      {loading ? (
+        <Loading />
+      ) : error ? (
         <ErrorComponent />
       ) : (
         <>
-          {loading ? (
-            <Loading />
-          ) : (
-            <>
-              <BackgroundContainer
-                source={require('../../assets/images/bank.jpg')}
-              />
-              <DataContainer>
-                <DescriptionContainer>
-                  <Description>Dernière mise à jour:</Description>
-                  <TimeStamp>
-                    {`${new Date(
-                      token.last_updated_timestamp,
-                    ).toLocaleDateString()} à ${new Date(
-                      token.last_updated_timestamp,
-                    ).toLocaleTimeString()}`}
-                  </TimeStamp>
-                  <Price>{token.price / 100 / 100} pièces d'or</Price>
-                </DescriptionContainer>
-              </DataContainer>
-            </>
-          )}
+          <BackgroundContainer
+            source={require('../../assets/images/bank.jpg')}
+          />
+          <DataContainer>
+            <DescriptionContainer>
+              <Description>Dernière mise à jour:</Description>
+              <TimeStamp>
+                {`${new Date(
+                  token.last_updated_timestamp,
+                ).toLocaleDateString()} à ${new Date(
+                  token.last_updated_timestamp,
+                ).toLocaleTimeString()}`}
+              </TimeStamp>
+              <Price>{token.price / 100 / 100} pièces d'or</Price>
+            </DescriptionContainer>
+          </DataContainer>
         </>
       )}
     </Container>

@@ -17,7 +17,7 @@ const ProfessionsStack = () => {
         <Stack.Screen
           name="/professions/details"
           component={Details}
-          options={{title: 'Chargement...'}}
+          options={{title: ''}}
         />
       </Stack.Navigator>
     </>

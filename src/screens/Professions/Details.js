@@ -3,9 +3,11 @@ import Loading from '../../components/Global/Loading';
 import axiosClient from '../../config/axiosClient';
 import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
+import DetailsProfession from '../../components/Professions/DetailsProfession';
 
 const ProfessionsDetails = ({route}) => {
   const [profession, setProfession] = useState({});
+  const [professionImage, setProfessionImage] = useState('');
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
   useEffect(() => {
@@ -14,17 +16,29 @@ const ProfessionsDetails = ({route}) => {
         `https://eu.api.blizzard.com/data/wow/profession/${route.params.id}?namespace=static-eu&locale=fr_FR&`,
       )
       .then(res => {
+        console.log(res);
         setProfession(res.data);
         navigation.setOptions({title: profession.name});
         setLoading(false);
       });
-  });
+    axiosClient
+      .get(
+        `https://eu.api.blizzard.com/data/wow/media/profession/${route.params.id}?namespace=static-eu&locale=fr_FR`,
+      )
+      .then(res => setProfessionImage(res.data.assets[0].value));
+  }, [profession.name, route.params.id, navigation]);
+
   return (
     <Container>
       {loading ? (
         <Loading />
       ) : (
-        <>{/* <StyledImage source={{uri: profession}}> */}</>
+        <>
+          <DetailsProfession
+            profession={profession}
+            professionImage={professionImage}
+          />
+        </>
       )}
     </Container>
   );
@@ -33,17 +47,6 @@ const ProfessionsDetails = ({route}) => {
 const Container = styled.View`
   height: 100%;
   width: 100%;
-`;
-
-const Title = styled.Text`
-  font-size: 20px;
-  font-weight: bold;
-`;
-
-const StyledImage = styled.Image`
-  height: 30%;
-  width: 100px;
-  background-color: lightgray;
 `;
 
 export default ProfessionsDetails;

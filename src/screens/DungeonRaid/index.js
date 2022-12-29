@@ -1,12 +1,8 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import Dungeons from '../../components/DungeonRaid/Dungeons';
 
 const DungeonRaid = () => {
-  return (
-    <View>
-      <Text>DungeonRaid</Text>
-    </View>
-  );
+  return <Dungeons />;
 };
 
 export default DungeonRaid;

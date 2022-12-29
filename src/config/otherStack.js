@@ -4,6 +4,8 @@ import Other from '../screens/Other';
 import Token from '../screens/Token';
 import DungeonRaid from '../screens/DungeonRaid';
 import Character from '../screens/Character';
+import DungeonDetails from '../screens/DungeonRaid/DungeonDetails';
+import BossDetails from '../components/DungeonRaid/BossDetails';
 
 const OtherStack = () => {
   const Stack = createNativeStackNavigator();
@@ -24,7 +26,17 @@ const OtherStack = () => {
         <Stack.Screen
           name="/dungeonAndRaid"
           component={DungeonRaid}
-          options={{title: 'Donjons et raids'}}
+          options={{title: 'Donjons et raids Mythiques'}}
+        />
+        <Stack.Screen
+          name="/dungeonAndRaid/dungeonDetails"
+          component={DungeonDetails}
+          options={{title: ''}}
+        />
+        <Stack.Screen
+          name="/dungeonAndRaid/dungeonDetails/bossDetails"
+          component={BossDetails}
+          options={{title: ''}}
         />
         <Stack.Screen
           name="/character"

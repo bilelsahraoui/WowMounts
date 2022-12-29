@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import {ActivityIndicator} from 'react-native';
 
 const Loading = () => {
   return (
     <LoadingContainer>
-      <LoadingDialog>Chargement en cours...</LoadingDialog>
+      <ActivityIndicator />
     </LoadingContainer>
   );
 };
@@ -14,11 +15,6 @@ const LoadingContainer = styled.View`
   justify-content: center;
   height: 100%;
   width: 100%;
-`;
-
-const LoadingDialog = styled.Text`
-  font-size: 15px;
-  text-align: center;
 `;
 
 export default Loading;
