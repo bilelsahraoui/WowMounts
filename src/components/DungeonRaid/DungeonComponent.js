@@ -6,12 +6,17 @@ import axiosClient from '../../config/axiosClient';
 const DungeonComponent = ({dungeon}) => {
   const navigation = useNavigation();
   const [image, setImage] = useState('');
+
   useEffect(() => {
     axiosClient
       .get(
         `https://eu.api.blizzard.com/data/wow/mythic-keystone/dungeon/${dungeon.id}?namespace=dynamic-eu&locale=fr_FR`,
       )
-      .then(res => setImage(res.data.zone.slug));
+      .then(res => {
+        setImage(
+          `https://render.worldofwarcraft.com/eu/zones/${res.data.zone.slug}-large.jpg`,
+        );
+      });
   });
 
   return (
@@ -23,9 +28,7 @@ const DungeonComponent = ({dungeon}) => {
       }>
       <BackgroundContainer
         source={{
-          uri: image
-            ? `https://render.worldofwarcraft.com/eu/zones/${image}-large.jpg`
-            : null,
+          uri: image ? image : null,
         }}
       />
       <DungeonTitle>{dungeon.name}</DungeonTitle>

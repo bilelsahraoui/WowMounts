@@ -1,39 +1,55 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components/native';
-import KeystoneTime from './KeystoneTime';
+import KeyDescription from './KeyDescription';
+import axiosClient from '../../config/axiosClient';
+import Loading from '../../components/Global/Loading';
+import ErrorComponent from '../../components/Global/ErrorComponent';
+import DungeonDescription from './DungeonDescription';
+import BossDescription from './BossDescription';
 
 const DungeonDetails = ({dungeon}) => {
+  const [dungeonDetails, setDungeonDetails] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    axiosClient
+      .get(dungeon.dungeon.key.href)
+      .then(res => {
+        setDungeonDetails(res.data);
+        setLoading(false);
+        console.log(res.data);
+      })
+      .catch(() => {
+        setLoading(false);
+        setError(true);
+      });
+  }, [dungeon]);
   return (
     <Container>
-      <KeyTimingText>Temps à atteindre pour push la clé en </KeyTimingText>
-      <KeyTimingContainer>
-        {dungeon.keystone_upgrades.map(key => {
-          return <KeystoneTime keystone={key} />;
-        })}
-      </KeyTimingContainer>
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <ErrorComponent />
+      ) : (
+        <>
+          <DungeonDescription dungeon={dungeonDetails} />
+          <KeyDescription dungeon={dungeon} key={dungeon.id} />
+          <BossDescription encounters={dungeonDetails.encounters} />
+        </>
+      )}
     </Container>
   );
 };
 
-const Container = styled.View`
+const Container = styled.ScrollView`
   align-self: center;
   height: 100%;
-  width: 90%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-`;
-
-const KeyTimingText = styled.Text`
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-`;
-
-const KeyTimingContainer = styled.View`
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
   width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 export default DungeonDetails;

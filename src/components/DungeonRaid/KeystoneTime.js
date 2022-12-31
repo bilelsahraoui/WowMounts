@@ -31,7 +31,7 @@ const KeyContainer = styled.View`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 120px;
   margin-top: 10px;
 `;
 
