@@ -9,19 +9,20 @@ const LootDescription = ({loots}) => {
     <Container>
       <ToggleOpen onPress={() => setIsOpen(!isOpen)}>
         <ToggleContainer>
-          {isOpen ? (
-            <ArrowImage source={require('../../assets/images/toggle-on.png')} />
-          ) : (
-            <ArrowImage source={require('../../assets/images/toggle.png')} />
-          )}
-
+          <ArrowImage
+            source={
+              isOpen
+                ? require('../../assets/images/toggle-on.png')
+                : require('../../assets/images/toggle.png')
+            }
+          />
           <LootDetailText>Butin</LootDetailText>
         </ToggleContainer>
       </ToggleOpen>
       {isOpen ? (
         <>
           {loots.map(loot => {
-            return <LootDetails loot={loot} key={loot.index} />;
+            return <LootDetails loot={loot} key={loot.id} />;
           })}
         </>
       ) : null}

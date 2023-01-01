@@ -1,21 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/native';
 import BossDetails from './BossDetails';
 
 const BossDescription = ({encounters}) => {
-  useEffect(() => {
-    console.log(encounters);
-  });
   const [isOpen, setIsOpen] = useState(true);
   return (
     <Container>
       <ToggleOpen onPress={() => setIsOpen(!isOpen)}>
         <ToggleContainer>
-          {isOpen ? (
-            <ArrowImage source={require('../../assets/images/toggle-on.png')} />
-          ) : (
-            <ArrowImage source={require('../../assets/images/toggle.png')} />
-          )}
+          <ArrowImage
+            source={
+              isOpen
+                ? require('../../assets/images/toggle-on.png')
+                : require('../../assets/images/toggle.png')
+            }
+          />
           <BossDescTitle>Liste des boss</BossDescTitle>
         </ToggleContainer>
       </ToggleOpen>

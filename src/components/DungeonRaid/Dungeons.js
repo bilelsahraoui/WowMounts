@@ -16,7 +16,6 @@ const Dungeons = () => {
         'https://eu.api.blizzard.com/data/wow/mythic-keystone/dungeon/index?namespace=dynamic-eu&locale=fr_FR',
       )
       .then(res => {
-        console.log(res.data);
         setDungeons(res.data.dungeons);
         setLoading(false);
         setError(false);

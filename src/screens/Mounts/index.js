@@ -7,6 +7,7 @@ import Loading from '../../components/Global/Loading';
 const Mounts = () => {
   const [mounts, setMounts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [slice, setSlice] = useState([0, 10]);
   useEffect(() => {
     axiosClient
       .get(
@@ -22,9 +23,13 @@ const Mounts = () => {
     <Loading />
   ) : (
     <FlatList
-      data={mounts}
+      data={mounts.slice(slice[0], slice[1])}
       renderItem={({item}) => <MountComponent id={item.id} />}
       keyExtractor={item => item.id}
+      onEndReached={() => {
+        setSlice([slice[0] + 10, slice[1] + 10]);
+      }}
+      onEndReachedThreshold={0.3}
     />
   );
 };

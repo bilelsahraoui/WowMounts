@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import LevelComponent from './LevelComponent';
 
 const DetailsProfession = ({profession, professionImage}) => {
   return (
@@ -21,24 +20,9 @@ const DetailsProfession = ({profession, professionImage}) => {
           </MetierContainer>
         </Container>
       </ScrollContainer>
-      {/* <StyledFlatList
-        data={profession.skill_tiers}
-        renderItem={({item}) => <LevelComponent item={item} />}
-        keyExtractor={item => item.id}
-      /> */}
     </>
   );
 };
-
-const StyledFlatList = styled.FlatList`
-  height: 40%;
-  margin-top: 8px;
-  border-radius: 10px;
-  border-width: 1px;
-  padding: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-`;
 
 const Container = styled.View`
   height: 100%;

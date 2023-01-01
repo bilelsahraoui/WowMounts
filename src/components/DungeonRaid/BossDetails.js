@@ -16,7 +16,6 @@ const BossDetails = ({boss}) => {
       .get(boss?.key.href)
       .then(res => {
         setBossDetails(res.data);
-        console.log(res.data);
         setLoading(false);
       })
       .catch(() => {
@@ -34,15 +33,13 @@ const BossDetails = ({boss}) => {
         <>
           <ToggleOpen onPress={() => setIsOpen(!isOpen)}>
             <ToggleContainer>
-              {isOpen ? (
-                <ArrowImage
-                  source={require('../../assets/images/toggle-on.png')}
-                />
-              ) : (
-                <ArrowImage
-                  source={require('../../assets/images/toggle.png')}
-                />
-              )}
+              <ArrowImage
+                source={
+                  isOpen
+                    ? require('../../assets/images/toggle-on.png')
+                    : require('../../assets/images/toggle.png')
+                }
+              />
               <BossDetailText>{boss.name.fr_FR}</BossDetailText>
             </ToggleContainer>
           </ToggleOpen>

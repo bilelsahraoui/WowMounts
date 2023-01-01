@@ -32,7 +32,7 @@ const DungeonRaid = ({route}) => {
   ) : error ? (
     <ErrorComponent />
   ) : (
-    <DungeonDetails dungeon={dungeon} />
+    <DungeonDetails dungeon={dungeon} image={route.params.image} />
   );
 };
 

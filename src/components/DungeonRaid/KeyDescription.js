@@ -4,17 +4,18 @@ import KeystoneTime from './KeystoneTime';
 
 const KeyDescription = ({dungeon}) => {
   const [isOpen, setIsOpen] = useState(true);
-
+  console.log(dungeon.keystone_upgrades);
   return (
     <Container>
       <ToggleOpen onPress={() => setIsOpen(!isOpen)}>
         <ToggleContainer>
-          {isOpen ? (
-            <ArrowImage source={require('../../assets/images/toggle-on.png')} />
-          ) : (
-            <ArrowImage source={require('../../assets/images/toggle.png')} />
-          )}
-
+          <ArrowImage
+            source={
+              isOpen
+                ? require('../../assets/images/toggle-on.png')
+                : require('../../assets/images/toggle.png')
+            }
+          />
           <KeyTitle>Timers Mythiques +</KeyTitle>
         </ToggleContainer>
       </ToggleOpen>
@@ -22,8 +23,8 @@ const KeyDescription = ({dungeon}) => {
         <KeyContainer>
           <KeyTimingText>Temps à atteindre pour passer la clé en</KeyTimingText>
           <KeyTimingContainer>
-            {dungeon.keystone_upgrades.map(key => {
-              return <KeystoneTime keystone={key} key={key.id} />;
+            {dungeon.keystone_upgrades.map((item, index) => {
+              return <KeystoneTime keystone={item} key={index} />;
             })}
           </KeyTimingContainer>
         </KeyContainer>
@@ -80,7 +81,6 @@ const KeyContainer = styled.View`
   align-self: center;
   height: auto;
   width: auto;
-  background-color: lightgray;
   border-radius: 16px;
   padding: 10px;
   margin-top: 10px;

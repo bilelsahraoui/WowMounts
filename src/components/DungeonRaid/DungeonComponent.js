@@ -24,6 +24,7 @@ const DungeonComponent = ({dungeon}) => {
       onPress={() =>
         navigation.navigate('/dungeonAndRaid/dungeonDetails', {
           id: dungeon.id,
+          image: image,
         })
       }>
       <BackgroundContainer
