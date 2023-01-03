@@ -3,24 +3,17 @@ import styled from 'styled-components/native';
 
 const DetailsProfession = ({profession, professionImage}) => {
   return (
-    <>
-      <ScrollContainer>
-        <Container>
-          <ImageContainer>
-            <StyledImage
-              source={{uri: professionImage ? professionImage : null}}
-            />
-          </ImageContainer>
-          <MetierContainer>
-            <MetierType>
-              Le métier {profession.name} est un des métiers{' '}
-              {profession.type.name}
-            </MetierType>
-            <MetierDescription>{profession.description}</MetierDescription>
-          </MetierContainer>
-        </Container>
-      </ScrollContainer>
-    </>
+    <Container>
+      <ImageContainer>
+        <StyledImage source={{uri: professionImage ? professionImage : null}} />
+      </ImageContainer>
+      <MetierContainer>
+        <MetierType>
+          Le métier {profession.name} est un des métiers {profession.type.name}
+        </MetierType>
+        <MetierDescription>{profession.description}</MetierDescription>
+      </MetierContainer>
+    </Container>
   );
 };
 
@@ -29,15 +22,10 @@ const Container = styled.View`
   width: 100%;
 `;
 
-const ScrollContainer = styled.ScrollView`
-  height: 100%;
-  width: 100%;
-`;
-
 const ImageContainer = styled.View`
   height: 160px;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 40px;
   margin-bottom: 10px;
   align-items: center;
 `;
