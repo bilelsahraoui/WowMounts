@@ -24,11 +24,15 @@ const MountComponent = ({id}) => {
     <ContainerOpacity>
       <StyledText>{mount?.name}</StyledText>
       <StyledImage
-        source={{
-          uri: mount.creature_displays
-            ? `https://render.worldofwarcraft.com/eu/npcs/zoom/creature-display-${mount.creature_displays[0].id}.jpg`
-            : null,
-        }}
+        source={
+          mount?.creature_displays
+            ? {
+                uri: mount?.creature_displays
+                  ? `https://render.worldofwarcraft.com/eu/npcs/zoom/creature-display-${mount.creature_displays[0].id}.jpg`
+                  : null,
+              }
+            : require('../../assets/images/no-image.png')
+        }
       />
     </ContainerOpacity>
   );

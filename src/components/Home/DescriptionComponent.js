@@ -16,8 +16,8 @@ const DescriptionComponent = () => {
           et survivre dans ce monde
         </StyledDesc>
         <StyledDesc>
-          Montures, Métiers, et même un petit jeton pour vous aider à garder
-          l'oeil sur le cours du PO
+          Montures, Métiers, Armurerie et même le Jeton WOW pour vous aider à
+          garder l'oeil sur le cours du PO
         </StyledDesc>
         <StyledDesc>Si vous avez tout compris, commencons !</StyledDesc>
         <ClosedComponent onPress={() => setOpen(false)} />
@@ -27,15 +27,16 @@ const DescriptionComponent = () => {
 };
 
 const Logo = styled.Image`
+  align-self: center;
   margin-top: 5px;
-  width: 100%;
+  width: 95%;
   height: 140px;
 `;
 
 const Container = styled.View`
   height: 95%;
   background-color: rgba(255, 255, 255, 0.8);
-  width: 85%;
+  width: 90%;
   align-self: center;
   margin-top: 5%;
   border-radius: 10px;

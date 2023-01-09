@@ -20,18 +20,6 @@ axios
 
 const axiosClient = axios.create();
 
-// axiosClient.interceptors.request.use(
-//   function (config) {
-//     AsyncStorage.getItem('apiToken').then(token => {
-//       config.headers.Authorization = `Bearer ${token}`;
-//     });
-//     return config;
-//   },
-//   function (error) {
-//     return Promise.reject(error);
-//   },
-// );
-
 AsyncStorage.getItem('apiToken').then(token => {
   axiosClient.defaults.headers.common.Authorization = `Bearer ${token}`;
   return axiosClient;
