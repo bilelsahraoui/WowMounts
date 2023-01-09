@@ -16,6 +16,7 @@ const BossDescription = ({encounters}) => {
             }
           />
           <BossDescTitle>Liste des boss</BossDescTitle>
+          <MythicImage source={require('../../assets/images/mythic.png')} />
         </ToggleContainer>
       </ToggleOpen>
       {isOpen ? (
@@ -33,6 +34,12 @@ const Container = styled.View`
   height: auto;
   width: auto;
   padding-bottom: 20px;
+`;
+
+const MythicImage = styled.Image`
+  height: 48px;
+  width: 48px;
+  margin-left: 10px;
 `;
 
 const ToggleContainer = styled.View`

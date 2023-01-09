@@ -17,6 +17,7 @@ const KeyDescription = ({dungeon}) => {
             }
           />
           <KeyTitle>Timers Mythiques +</KeyTitle>
+          <TimerImage source={require('../../assets/images/timer.png')} />
         </ToggleContainer>
       </ToggleOpen>
       {isOpen ? (
@@ -37,6 +38,12 @@ const Container = styled.View`
   height: auto;
   width: auto;
   padding-bottom: 20px;
+`;
+
+const TimerImage = styled.Image`
+  height: 48px;
+  width: 48px;
+  margin-left: 10px;
 `;
 
 const ToggleContainer = styled.View`

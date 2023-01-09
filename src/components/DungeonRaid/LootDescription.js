@@ -17,6 +17,7 @@ const LootDescription = ({loots}) => {
             }
           />
           <LootDetailText>Butin</LootDetailText>
+          <LootImage source={require('../../assets/images/loot.png')} />
         </ToggleContainer>
       </ToggleOpen>
       {isOpen ? (
@@ -35,6 +36,12 @@ const Container = styled.View`
   height: auto;
   width: 100%;
   padding-bottom: 10px;
+`;
+
+const LootImage = styled.Image`
+  height: 48px;
+  width: 48px;
+  margin-left: 10px;
 `;
 
 const LootDetailText = styled.Text`

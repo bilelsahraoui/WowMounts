@@ -16,6 +16,7 @@ const DungeonDescription = ({dungeon, image}) => {
             }
           />
           <DescriptionTitle>Informations globales</DescriptionTitle>
+          <InfoImage source={require('../../assets/images/info.png')} />
         </ToggleContainer>
       </ToggleOpen>
       {isOpen ? (
@@ -48,6 +49,12 @@ const AreaImage = styled.Image`
   border-radius: 14px;
   border-width: 1px;
   margin-bottom: 20px;
+`;
+
+const InfoImage = styled.Image`
+  height: 48px;
+  width: 48px;
+  margin-left: 10px;
 `;
 
 const DescriptionTitle = styled.Text`
