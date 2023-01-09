@@ -4,22 +4,22 @@ import styled from 'styled-components/native';
 const Pagination = ({page, setPage, slice, setSlice}) => {
   return (
     <Container>
-      {slice[0] === 0 && slice[1] === 15 ? (
+      {slice[0] === 0 && slice[1] === 10 ? (
         <PaginationButton>{' <-- '}</PaginationButton>
       ) : (
         <PaginationButton
           onPress={() => {
             setPage(page - 1);
-            setSlice([slice[0] - 15, slice[1] - 15]);
+            setSlice([slice[0] - 10, slice[1] - 10]);
           }}>
           {' <-- '}
         </PaginationButton>
       )}
-      <PaginationButton>Page {page} </PaginationButton>
+      <PaginationButton>Page {page}</PaginationButton>
       <PaginationButton
         onPress={() => {
           setPage(page + 1);
-          setSlice([slice[0] + 15, slice[1] + 15]);
+          setSlice([slice[0] + 10, slice[1] + 10]);
         }}>
         {' --> '}
       </PaginationButton>

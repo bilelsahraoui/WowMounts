@@ -46,7 +46,10 @@ const Token = () => {
                   token.last_updated_timestamp,
                 ).toLocaleTimeString()}`}
               </TimeStamp>
-              <Price>{token.price / 100 / 100} pièces d'or</Price>
+              <GoldContainer>
+                <WowGold source={require('../../assets/images/wow-gold.png')} />
+                <Price>{token.price / 100 / 100} pièces d'or</Price>
+              </GoldContainer>
             </DescriptionContainer>
           </DataContainer>
         </>
@@ -64,6 +67,13 @@ const BackgroundContainer = styled.Image`
   position: absolute;
 `;
 
+const GoldContainer = styled.View`
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
 const Container = styled.View`
   align-items: center;
   height: 100%;
@@ -75,7 +85,7 @@ const Container = styled.View`
 const DataContainer = styled.View`
   align-items: center;
   height: 100px;
-  width: 40%;
+  width: 50%;
   flex-direction: column;
   justify-content: space-around;
   margin-bottom: 60px;
@@ -103,6 +113,11 @@ const Price = styled.Text`
 
 const TimeStamp = styled.Text`
   font-size: 15px;
+`;
+
+const WowGold = styled.Image`
+  height: 20px;
+  width: 20px;
 `;
 
 export default Token;

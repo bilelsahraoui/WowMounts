@@ -68,7 +68,7 @@ function Tabs() {
 
 const StyledIcon = styled.Image`
   width: 40px;
-  height: 25px;
+  height: 35px;
   align-items: center;
   justify-content: center;
 `;

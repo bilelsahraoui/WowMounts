@@ -32,8 +32,14 @@ const LootDetails = ({loot}) => {
         <ErrorComponent />
       ) : (
         <LootContainer>
-          <LootImage source={{uri: itemImage ? itemImage : null}} />
-          {item.name?.fr_FR.length > 30 ? (
+          <LootImage
+            source={
+              itemImage
+                ? {uri: itemImage}
+                : require('../../assets/images/no-image.png')
+            }
+          />
+          {item.name?.fr_FR.length >= 30 ? (
             <SmallText>{item.name?.fr_FR}</SmallText>
           ) : (
             <LootText>{item.name?.fr_FR}</LootText>
