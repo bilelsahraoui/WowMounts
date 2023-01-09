@@ -1,6 +1,6 @@
 # WowMounts
 
-WowMounts sera une application Android principalement dédiée aux montures disponibles sur World of Warcraft, elle permettra également de se renseigner sur d'autres sujets du jeu tels que :
+WowMounts sera une application Android principalement dédiée aux montures, métiers et autres infos disponibles sur World of Warcraft, elle permettra de se renseigner sur des sujets du jeu tels que :
 
 - Montures
 - Métiers
