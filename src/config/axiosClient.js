@@ -8,6 +8,7 @@ axios
     {},
     {
       auth: {
+        // ça ne marche pas en utilisant les variables d'environnement je ne sais pas pourquoi
         // username: `${API_USERNAME}`,
         // password: `${API_PASSWORD}`,
         username: '224c1b9847cc4423af306b30406934f0',
