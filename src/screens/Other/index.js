@@ -1,13 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
 import {useNavigation} from '@react-navigation/native';
+import notifee from '@notifee/react-native';
+import TokenIcon from '../../assets/icons/TokenIcon.png';
 
 const Other = () => {
   const navigation = useNavigation();
 
+  async function displayTokenNotification() {
+    const channelId = await notifee.createChannel({
+      id: 'default',
+      name: 'WowMounts',
+    });
+
+    await notifee.displayNotification({
+      title: "Dernier coup d'oeil sur le jeton",
+      body: `Aujourd'hui à ${new Date().toLocaleTimeString('fr-FR')}`,
+      android: {
+        channelId: 'default',
+        largeIcon: TokenIcon,
+        pressAction: {
+          id: 'default',
+        },
+      },
+    });
+  }
+
   return (
     <Container>
-      <Categorie onPress={() => navigation.navigate('/token')}>
+      <Categorie
+        onPress={() => {
+          navigation.navigate('/token');
+          displayTokenNotification();
+        }}>
         <BackgroundContainer
           source={require('../../assets/images/token.png')}
         />
